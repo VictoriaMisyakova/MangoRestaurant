@@ -227,6 +227,7 @@ namespace IdentityServerHost.Quickstart.UI
             return View("LoggedOut", vm);
         }
 
+
         [HttpGet]
         public IActionResult AccessDenied()
         {
