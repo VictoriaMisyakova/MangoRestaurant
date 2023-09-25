@@ -11,6 +11,12 @@ SD.ProductAPIBase = builder.Configuration["ServiceUrls:ProductAPI"];
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultScheme = "Cookies";
+    options.DefaultChallengeScheme = "oidc";
+}).AddCookie("Cookies", c => c.ExpireTimeSpan = TimeSpan.FromMinutes(10));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
